@@ -66,8 +66,17 @@
         <div class="main-wrapper">
             <!-- TOP BAR HEADER -->
             <header class="top-header">
-                <div class="top-header-title">SNEAKERNESS</div>
-                <div class="top-header-date">25-26 MEI - VAN NELLEFABRIEK</div>
+                <div class="top-header-title">SNEAKERNESS <span style="font-size: 13px; font-weight: normal; margin-left: 10px; color: #a0a5b5;">| BEHEEROMGEVING</span></div>
+                <div class="top-header-date" style="display: flex; align-items: center; gap: 20px;">
+                    <a href="{{ route('home') }}" style="color: #ff3b30; text-decoration: none; font-weight: bold; font-size: 13px;">🌐 Bekijk Klantwebsite</a>
+                    @auth
+                        <span style="font-size: 13px; color: #666666;">👤 {{ auth()->user()->name }}</span>
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" style="background: #ff3b30; border: none; color: #ffffff; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer;">Uitloggen</button>
+                        </form>
+                    @endauth
+                </div>
             </header>
 
             <!-- FLASH MESSAGES / ALERT NOTIFICATIONS -->

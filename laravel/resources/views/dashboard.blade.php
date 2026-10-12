@@ -3,8 +3,10 @@
 @section('content')
 <div class="dashboard-page">
     <div class="page-header">
-        <h1>Dashboard Sneakerness Rotterdam</h1>
-        <p>Overzicht van evenementen, recente ticketverkopen en verhuurde stands.</p>
+        <div>
+            <h1>Dashboard Sneakerness Rotterdam</h1>
+            <p>Beheeromgeving voor organisator & event managers.</p>
+        </div>
     </div>
 
     <div class="stats-overview">

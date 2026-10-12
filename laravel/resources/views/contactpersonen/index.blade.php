@@ -2,10 +2,14 @@
 
 @section('content')
 <div class="contact-page">
-    <div class="page-header">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h1>Contactpersonen Overzicht</h1>
             <p>Overzicht van contactpersonen van verkopers en bezoekers.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <a href="{{ route('contactpersonen.create') }}" class="btn-primary" style="text-decoration: none; padding: 10px 18px; font-weight: bold; display: inline-block;">+ Contactpersoon Toevoegen</a>
+            <a href="{{ route('contactpersonen.koppelen.form') }}" class="btn-secondary" style="text-decoration: none; padding: 10px 18px; font-weight: bold; display: inline-block;">🔗 Contact Koppelen</a>
         </div>
     </div>
 

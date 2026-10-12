@@ -2,10 +2,13 @@
 
 @section('content')
 <div class="tickets-page">
-    <div class="page-header">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h1>Tickets Overzicht</h1>
             <p>Overzicht van verkochte en gereserveerde tickets voor Sneakerness Rotterdam.</p>
+        </div>
+        <div>
+            <a href="{{ route('tickets.create') }}" class="btn-primary" style="text-decoration: none; padding: 10px 18px; font-weight: bold; display: inline-block;">+ Ticket Toevoegen</a>
         </div>
     </div>
 

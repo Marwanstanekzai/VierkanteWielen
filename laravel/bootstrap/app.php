@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\EnsureUserRole;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,14 +14,20 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'role' => EnsureUserRole::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (\PDOException $e, Request $request) {
+        $exceptions->render(function (PDOException $e, Request $request) {
             return response()->view('errors.db_error', [], 500);
         });
 
-        $exceptions->render(function (\Illuminate\Database\QueryException $e, Request $request) {
+        $exceptions->render(function (QueryException $e, Request $request) {
+            return response()->view('errors.db_error', [], 500);
+        });
+
+        $exceptions->render(function (InvalidArgumentException $e, Request $request) {
             return response()->view('errors.db_error', [], 500);
         });
 

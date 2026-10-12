@@ -2,10 +2,13 @@
 
 @section('content')
 <div class="verkopers-page">
-    <div class="page-header">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h1>Verkopers Overzicht</h1>
             <p>Overzicht van geregistreerde verkopers en hun gekoppelde contactpersonen.</p>
+        </div>
+        <div>
+            <a href="{{ route('verkopers.create') }}" class="btn-primary" style="text-decoration: none; padding: 10px 18px; font-weight: bold; display: inline-block;">+ Verkoper Toevoegen</a>
         </div>
     </div>
 

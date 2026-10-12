@@ -13,54 +13,98 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // 0. Seed Authenticatable Users for Admin and Klant roles
+        if (DB::table('users')->where('email', 'admin@sneakerness.nl')->count() === 0) {
+            DB::table('users')->insert([
+                [
+                    'name' => 'Sneakerness HQ Rotterdam',
+                    'username' => 'admin_rotterdam',
+                    'email' => 'admin@sneakerness.nl',
+                    'password' => Hash::make('Secret123!'),
+                    'role' => 'admin',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'name' => 'Marwan Stanekzai',
+                    'username' => 'marwan_admin',
+                    'email' => 'marwan@sneakerness.nl',
+                    'password' => Hash::make('Secret123!'),
+                    'role' => 'admin',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'name' => 'Jan de Vries',
+                    'username' => 'jan_devries',
+                    'email' => 'jan.devries@example.com',
+                    'password' => Hash::make('Secret123!'),
+                    'role' => 'klant',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'name' => 'Sophie Jansen',
+                    'username' => 'sophie_jansen',
+                    'email' => 'sophie.jansen@example.com',
+                    'password' => Hash::make('Secret123!'),
+                    'role' => 'klant',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+            ]);
+        }
+
         // 1. Organisator (min 5 rows)
-        DB::table('organisators')->insert([
-            [
-                'Naam' => 'Sneakerness HQ Rotterdam',
-                'Gebruikersnaam' => 'admin_rotterdam',
-                'Wachtwoord' => Hash::make('Secret123!'),
-                'Isactief' => true,
-                'Opmerking' => 'Hoofdorganisator Van Nellefabriek',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-            [
-                'Naam' => 'Marwan Stanekzai',
-                'Gebruikersnaam' => 'marwan_admin',
-                'Wachtwoord' => Hash::make('Secret123!'),
-                'Isactief' => true,
-                'Opmerking' => 'Event Manager Sneakerness',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-            [
-                'Naam' => 'Event Crew Coordinator',
-                'Gebruikersnaam' => 'crew_lead',
-                'Wachtwoord' => Hash::make('Secret123!'),
-                'Isactief' => true,
-                'Opmerking' => 'Vrijwilligers & Logistiek',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-            [
-                'Naam' => 'Ticketing Admin',
-                'Gebruikersnaam' => 'ticket_admin',
-                'Wachtwoord' => Hash::make('Secret123!'),
-                'Isactief' => true,
-                'Opmerking' => 'Beheer kassa en toegangscontrole',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-            [
-                'Naam' => 'Stand Manager',
-                'Gebruikersnaam' => 'stand_admin',
-                'Wachtwoord' => Hash::make('Secret123!'),
-                'Isactief' => true,
-                'Opmerking' => 'Verkoper en stand toewijzing',
-                'Datumaangemaakt' => now(),
-                'Datumgewijzigd' => now(),
-            ],
-        ]);
+        if (DB::table('organisators')->count() === 0) {
+            DB::table('organisators')->insert([
+                [
+                    'Naam' => 'Sneakerness HQ Rotterdam',
+                    'Gebruikersnaam' => 'admin_rotterdam',
+                    'Wachtwoord' => Hash::make('Secret123!'),
+                    'Isactief' => true,
+                    'Opmerking' => 'Hoofdorganisator Van Nellefabriek',
+                    'Datumaangemaakt' => now(),
+                    'Datumgewijzigd' => now(),
+                ],
+                [
+                    'Naam' => 'Marwan Stanekzai',
+                    'Gebruikersnaam' => 'marwan_admin',
+                    'Wachtwoord' => Hash::make('Secret123!'),
+                    'Isactief' => true,
+                    'Opmerking' => 'Event Manager Sneakerness',
+                    'Datumaangemaakt' => now(),
+                    'Datumgewijzigd' => now(),
+                ],
+                [
+                    'Naam' => 'Event Crew Coordinator',
+                    'Gebruikersnaam' => 'crew_lead',
+                    'Wachtwoord' => Hash::make('Secret123!'),
+                    'Isactief' => true,
+                    'Opmerking' => 'Vrijwilligers & Logistiek',
+                    'Datumaangemaakt' => now(),
+                    'Datumgewijzigd' => now(),
+                ],
+                [
+                    'Naam' => 'Ticketing Admin',
+                    'Gebruikersnaam' => 'ticket_admin',
+                    'Wachtwoord' => Hash::make('Secret123!'),
+                    'Isactief' => true,
+                    'Opmerking' => 'Beheer kassa en toegangscontrole',
+                    'Datumaangemaakt' => now(),
+                    'Datumgewijzigd' => now(),
+                ],
+                [
+                    'Naam' => 'Stand Manager',
+                    'Gebruikersnaam' => 'stand_admin',
+                    'Wachtwoord' => Hash::make('Secret123!'),
+                    'Isactief' => true,
+                    'Opmerking' => 'Verkoper en stand toewijzing',
+                    'Datumaangemaakt' => now(),
+                    'Datumgewijzigd' => now(),
+                ],
+            ]);
+        }
 
         // 2. Bezoeker (min 5 rows)
         DB::table('bezoekers')->insert([

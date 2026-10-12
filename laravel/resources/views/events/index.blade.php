@@ -2,10 +2,13 @@
 
 @section('content')
 <div class="events-page">
-    <div class="page-header">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
         <div>
             <h1>Evenementen Overzicht</h1>
             <p>Overzicht van evenementen, locaties en beschikbare capaciteiten.</p>
+        </div>
+        <div>
+            <a href="{{ route('events.create') }}" class="btn-primary" style="text-decoration: none; padding: 10px 18px; font-weight: bold; display: inline-block;">+ Event Instellen</a>
         </div>
     </div>
 
